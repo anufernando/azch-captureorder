@@ -28,7 +28,11 @@ stages:
         dockerfile: '**/Dockerfile'
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: $(tag)
-
+  - job: Push
+    displayName: Push job
+    pool:
+      vmImage: ubuntu-latest
+    steps:  
     - task: PublishPipelineArtifact@0
       inputs:
         artifactName: 'manifests'
